@@ -1,157 +1,13 @@
-// PRODUCTOS
+let productos = [];
 
-const productos = [
-    {
-        id: "destacados-01",
-        titulo: "destacados 01",
-        imagen: "./img/pelota-voley-wilson.png",
-        categoria: {
-            nombre: "Destacados",
-            id: "destacados"
-        },
-        precio: "1000"
-    },
-    {
-        id: "destacados-02",
-        titulo: "destacados 02",
-        imagen: "./img/pelota-voley-wilson.png",
-        categoria: {
-            nombre: "Destacados",
-            id: "destacados"
-        },
-        precio: "1000"
-    },
-    {
-        id: "destacados-03",
-        titulo: "destacados 03",
-        imagen: "./img/pelota-voley-wilson.png",
-        categoria: {
-            nombre: "Destacados",
-            id: "destacados"
-        },
-        precio: "1000"
-    },
-    {
-        id: "destacados-04",
-        titulo: "destacados 04",
-        imagen: "./img/pelota-voley-wilson.png",
-        categoria: {
-            nombre: "Destacados",
-            id: "destacados"
-        },
-        precio: "1000"
-    },
-    {
-        id: "destacados-05",
-        titulo: "destacados 05",
-        imagen: "./img/pelota-voley-wilson.png",
-        categoria: {
-            nombre: "Destacados",
-            id: "destacados"
-        },
-        precio: "1000"
-    },
-    {
-        id: "ropa-01",
-        titulo: "ropa 01",
-        imagen: "./img/pelota-voley-wilson.png",
-        categoria: {
-            nombre: "Ropa",
-            id: "ropa"
-        },
-        precio: "1000"
-    },
-    {
-        id: "ropa-02",
-        titulo: "ropa 02",
-        imagen: "./img/pelota-voley-wilson.png",
-        categoria: {
-            nombre: "Ropa",
-            id: "ropa"
-        },
-        precio: "1000"
-    },
-    {
-        id: "ropa-03",
-        titulo: "ropa 03",
-        imagen: "./img/pelota-voley-wilson.png",
-        categoria: {
-            nombre: "Ropa",
-            id: "ropa"
-        },
-        precio: "1000"
-    },
-    {
-        id: "ropa-04",
-        titulo: "ropa 04",
-        imagen: "./img/pelota-voley-wilson.png",
-        categoria: {
-            nombre: "Ropa",
-            id: "ropa"
-        },
-        precio: "1000"
-    },
-    {
-        id: "ropa-05",
-        titulo: "ropa 05",
-        imagen: "./img/pelota-voley-wilson.png",
-        categoria: {
-            nombre: "ropa",
-            id: "ropa"
-        },
-        precio: "1000"
-    },
-    {
-        id: "accesorios-01",
-        titulo: "Accesorios 01",
-        imagen: "./img/pelota-voley-wilson.png",
-        categoria: {
-            nombre: "Accesorios",
-            id: "accesorios"
-        },
-        precio: "1000"
-    },
-    {
-        id: "accesorios-02",
-        titulo: "Accesorios 02",
-        imagen: "./img/pelota-voley-wilson.png",
-        categoria: {
-            nombre: "Accesorios",
-            id: "accesorios"
-        },
-        precio: "1000"
-    },
-    {
-        id: "accesorios-03",
-        titulo: "Accesorios 03",
-        imagen: "./img/pelota-voley-wilson.png",
-        categoria: {
-            nombre: "Accesorios",
-            id: "accesorios"
-        },
-        precio: "1000"
-    },
-    {
-        id: "accesorios-04",
-        titulo: "Accesorios",
-        imagen: "./img/pelota-voley-wilson.png",
-        categoria: {
-            nombre: "Accesorios",
-            id: "accesorios"
-        },
-        precio: "1000"
-    },
-    {
-        id: "accesorios-05",
-        titulo: "Accesorios 05",
-        imagen: "./img/pelota-voley-wilson.png",
-        categoria: {
-            nombre: "Accesorios",
-            id: "accesorios"
-        },
-        precio: "1000"
-    },
-];
+fetch("./js/productos.json")
+    .then(response => response.json())
+    .then(data => {
+        productos = data;
+        cargarProductos (productos);
+    }
+
+    )
 
 const contenedorProductos = document.querySelector("#contenedorProductos");
 const botonesCategorias = document.querySelectorAll(".boton-categoria");
@@ -250,3 +106,11 @@ function actualizarNumerito() {
     let nuevoNumerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
     numerito.innerText = nuevoNumerito;
 } 
+
+Swal.fire({
+    title: "Precios de Pelicula",
+    text: "del 1 al 31 de agosto",
+    imageUrl: "./img/hotsale.png", 
+    imageHeight: 100,
+    imageAlt: "A tall image"
+  });

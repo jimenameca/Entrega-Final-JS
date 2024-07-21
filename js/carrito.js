@@ -6,7 +6,7 @@ const contenedorCarritoAcciones = document.querySelector("#carrito-acciones")
 const contenedorCarritoComprado = document.querySelector("#carrito-comprado")
 let botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar")
 const botonVaciar = document.querySelector("#carrito-acciones-vaciar")
-const contenedorTotal = document.querySelector ("#total")
+const contenedorTotal = document.querySelector("#total")
 const botonComprar = document.querySelector("#carrito-acciones-comprar")
 
 function cargarProductosCarrito() {
@@ -16,11 +16,11 @@ function cargarProductosCarrito() {
         contenedorCarritoProductos.classList.remove("disabled")
         contenedorCarritoAcciones.classList.remove("disabled")
         contenedorCarritoComprado.classList.add("disabled");
-    
+
         contenedorCarritoProductos.innerHTML = "";
-    
+
         productosEnCarrito.forEach(producto => {
-    
+
             const div = document.createElement("div")
             div.classList.add("carrito-producto")
             div.innerHTML = `
@@ -46,16 +46,16 @@ function cargarProductosCarrito() {
             </div>
             <button class="carrito-producto-eliminar" id="${producto.id}"><i class="bi bi-trash3-fill"></i></button>
             `;
-    
+
             contenedorCarritoProductos.append(div);
         })
-    
+
     } else {
-    
+
         contenedorCarritoVacio.classList.remove("disabled");
         contenedorCarritoProductos.classList.add("disabled");
         contenedorCarritoAcciones.classList.add("disabled");
-        contenedorCarritoComprado.classList.add("disabled");    
+        contenedorCarritoComprado.classList.add("disabled");
     }
 
     actualizarBotonesEliminar();
@@ -64,7 +64,7 @@ function cargarProductosCarrito() {
 
 cargarProductosCarrito()
 
- 
+
 
 
 function actualizarBotonesEliminar() {
@@ -79,8 +79,8 @@ function actualizarBotonesEliminar() {
 
 function eliminarDelCarrito(e) {
     const idBoton = e.currentTarget.id;
-    const index = productosEnCarrito.findIndex (producto => producto.id === idBoton)
-    productosEnCarrito.splice(index,1)
+    const index = productosEnCarrito.findIndex(producto => producto.id === idBoton)
+    productosEnCarrito.splice(index, 1)
     cargarProductosCarrito()
 
     localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito))
@@ -93,14 +93,34 @@ botonVaciar.addEventListener("click", vaciarCarrito);
 
 function vaciarCarrito() {
 
-    productosEnCarrito.length = 0;
-    localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
-    cargarProductosCarrito();
+    Swal.fire({
+        title: "estas seguro de continuar?",
+        icon: "question",
+        html: `
+          tu carrito quedara vacio 
+        `,
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: false,
+        confirmButtonText: `
+          Si
+        `,
 
+        cancelButtonText: `
+          No
+        `,
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            productosEnCarrito.length = 0;
+            localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarrito));
+            cargarProductosCarrito();
+        }
+    })
 }
 
 function actualizarTotal() {
-    const totalCalculado =  productosEnCarrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
+    const totalCalculado = productosEnCarrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
     total.innerText = `$${totalCalculado}`
 }
 
@@ -110,7 +130,7 @@ function comprarCarrito() {
 
     productosEnCarrito.length = 0;
     localStorage.setItem("", JSON.stringify(productosEnCarrito));
-    
+
     contenedorCarritoVacio.classList.add("disabled");
     contenedorCarritoProductos.classList.add("disabled");
     contenedorCarritoAcciones.classList.add("disabled");
