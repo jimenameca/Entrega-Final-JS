@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="./js/main.js"> </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,8 +12,6 @@
     <title>Hasta la vista Baby!</title>
 </head>
 <body>
-    <script src="./js/carrito.js"></script>
-</body> 
 
 <div class="wrapper">
 <aside>
@@ -20,59 +19,30 @@
             <h1 class="logo">Hasta la vista Baby!</h1>
         </header>
     <nav>
-        <ul>
+        <ul class="menu">
             <li>
-                <button class="boton-menu boton-categoria active"> <i class="bi bi-camera-video"></i> Productos destacados</button>
+                <button id="destacados" class="boton-menu boton-categoria active"> <i class="bi bi-camera-video"></i> Productos destacados</button>
             </li>
             <li>
-                <button class="boton-menu boton-categoria"><i class="bi bi-camera-video-fill"></i> Ropa</button>
+                <button id="ropa" class="boton-menu boton-categoria"><i class="bi bi-camera-video-fill"></i> Ropa</button>
             </li>
             <li>
-                <button class="boton-menu boton-categoria active"><i class="bi bi-camera-video-fill"></i> Accesorios</button>
+                <button id="accesorios" class="boton-menu boton-categoria"><i class="bi bi-camera-video-fill"></i> Accesorios</button>
             </li>
             <li> 
                 <a class="boton-menu boton-carrito" href="./carrito.html">
-                    <i class="bi bi-cart4"></i> Carrito <span class="numerito">0</span></a>
+                    <i class="bi bi-cart4"></i> Carrito <span id="numerito" class="numerito">0</span>
+                </a>
             </li>
         </ul>
     </nav>
     <footer><p>Seguinos en redes</p></footer>
 </aside>
 <main>
-<h2 class="titulo-principal"> Todos los productos</h2>
-<div class="contenedor-productos">
-    <div class="producto">
-    <img class="producto-imagen" src="./img/bolso-mia.png" alt="">
-    <div class="producto-detalles">
-        <h3 class="producto-titulo">Bolso 01</h3>
-        <p class="producto-precio">10000</p>
-        <button class="producto-agregar">Agregar</button>
-    </div>
-    </div>
-    <div class="producto">
-        <img class="producto-imagen" src="./img/pelota-voley-wilson.png" alt="">
-        <div class="producto-detalles">
-            <h3 class="producto-titulo">Pelota 02</h3>
-            <p class="producto-precio">20000</p>
-            <button class="producto-agregar">Agregar</button>
-        </div>
-        </div>
-        <div class="producto">
-            <img class="producto-imagen" src="./img/remera-john-wick.png" alt="">
-            <div class="producto-detalles">
-                <h3 class="producto-titulo">Remera 03</h3>
-                <p class="producto-precio">25000</p>
-                <button class="producto-agregar">Agregar</button>
-            </div>
-            </div>
-            <div class="producto">
-                <img class="producto-imagen" src="./img/remera-killbill.png" alt="">
-                <di∫v class="producto-detalles">
-                    <h3 class="producto-titulo">Remera 04</h3>
-                    <p class="producto-precio">25000</p>
-                    <button class="producto-agregar">Agregar</button>
-                </div>
-                </div>
-</div>
+<h2 class="titulo-principal" id="titulo-principal">Destacados</h2>
+<div id="contenedorProductos" class="contenedor-productos"></div>
 </main>
+</html>
+        
+    </body>
 </html>
